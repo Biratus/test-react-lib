@@ -1,30 +1,20 @@
-import classNames from 'classnames'
-import React from 'react'
-import ButtonProps from './button.props'
-import './button.less'
+import React, { useState } from "react";
 
 /**
  * A generic button
  * @param props {@link ButtonProps}
  * @returns Element
  */
-function Button (props: ButtonProps): JSX.Element {
+function Button(): JSX.Element {
+  const [count, setCount] = useState(0);
   return (
     <button
-      id={props.id}
-      className={classNames('button', props.className)}
-      disabled={props.disabled}
-      name={props.name}
-      data-block={props.block}
-      data-hollow={props.hollow}
-      data-shape={props.shape ?? 'square'}
-      data-size={props.size ?? 'medium'}
-      data-variant={props.variant ?? 'primary'}
-      data-testid={props['data-testid']}
+      className="btn btn-primary"
+      onClick={() => setCount((cnt) => cnt + 1)}
     >
-      {props.children}
+      Count {count}
     </button>
-  )
+  );
 }
 
-export default Button
+export default Button;
